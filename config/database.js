@@ -7,7 +7,7 @@ const {Sequelize} = require('sequelize')
 //     host:'localhost',
 //     dialect:'postgres'
 // });
-const dev = 'postgresql://neondb_owner:npg_upKNzV7Rktw3@ep-wandering-bread-a5ype6z0-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require&pooling=true'
+
 const sequelize= new Sequelize(dev)
 
 sequelize.authenticate().then(()=>{

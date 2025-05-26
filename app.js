@@ -4,6 +4,10 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json()); // Just in case
 
+app.get("/", (req, res) => {
+  res.json("hello");
+});
+
 app.post("/ussd", (req, res) => {
   const { sessionId, serviceCode, phoneNumber, text, pin } = req.body;
 
@@ -42,11 +46,11 @@ app.post("/ussd", (req, res) => {
     }
   } else if (textArray[0] === "1" && textArray.length === 5) {
     if (textArray[4] && /^\d{10}$/.test(textArray[4])) {
-      response = `Select a loan repayment   Plan
+      response = ` CON Select a loan repayment   Plan
     1.  3month @ 1% daily
     2.  6month @ 0.8% daily`;
     } else {
-      response = `CON ENTER A  VALID BVN NUMBER `;
+      response = `CON loan repayment   is  invalid  `;
     }
   } else if (textArray[0] === "1" && textArray.length === 6) {
     if (textArray[5] === "1") {
@@ -58,13 +62,11 @@ app.post("/ussd", (req, res) => {
     } else {
       response = `CON Invalid Loan Repayment `;
     }
-  }
-  else  if(textArray[0]=== "1"  &&  textArray.length === 7){
-    if(textArray[6]=== "1"){
-        response = `CON  Dear Customer Kindly Note   Account  will
-    credited  soon`
-    }
-    else {
+  } else if (textArray[0] === "1" && textArray.length === 7) {
+    if (textArray[6] === "1") {
+      response = `CON  Dear Customer Kindly Note   Account  will
+    credited  soon`;
+    } else {
       response = `CON Thank you for banking with  us  `;
     }
   }
@@ -74,6 +76,7 @@ app.post("/ussd", (req, res) => {
 });
 
 app.listen(4000, (req, res) => {
+  console.log(`http://127.0.0.1:4000`);
   console.log(" App  is running ");
 });
 

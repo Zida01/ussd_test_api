@@ -21,7 +21,7 @@ const loanCalculate = (amount, option) => {
   const totalRepayment = amount + totalInterest;
   const monthlyRepayment = totalRepayment / month;
 
-  return `END Loan Breakdown:
+  return `Loan Breakdown:
 Loan Amount: ₦${amount}
 Duration: ${month} months
 Interest: ₦${totalInterest.toFixed(2)}
@@ -29,4 +29,12 @@ Total Repayment: ₦${totalRepayment.toFixed(2)}
 Monthly Repayment: ₦${monthlyRepayment.toFixed(2)}`;
 };
 
-module.exports = loanCalculate;
+
+const loanfees=()=>{
+
+    return `Loan fees breakdown
+    Application Fess:1%
+    processing Fess: 1%`
+
+}
+module.exports = {loanCalculate,  loanfees};
