@@ -1,5 +1,5 @@
 const express = require("express");
-const loanCalculate = require("./utils/loan");
+const{loanCalculate  } = require("./utils/loan");
 const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json()); // Just in case
@@ -55,7 +55,6 @@ app.post("/ussd", (req, res) => {
   } else if (textArray[0] === "1" && textArray.length === 6) {
     if (textArray[5] === "1") {
       let data = loanCalculate(textArray[1], textArray[5]);
-      console.log("eemes");
       response = `CON  ${data}  
       1.   Accept
       2.   Reject`;
